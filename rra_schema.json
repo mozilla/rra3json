@@ -1,0 +1,82 @@
+{
+    "timestamp": "",
+    "lastmodified": "",
+    "summary": "",
+    "source": "",
+    "category": "rra_data",
+    "severity": "INFO",
+    "tags": [
+        "RRA",
+        "service",
+        "3.0.0"
+        ],
+    "details": {
+        "metadata": {
+            "service": "",
+            "service_provided": "",
+            "description": "",
+            "scope": "",
+            "owner": "",
+            "contacts": [],
+            "analyst": ""
+        },
+        "data": {
+            "default": "",
+            "PUBLIC": [],
+            "INTERNAL": [],
+            "RESTRICTED": [],
+            "SECRET": []
+        },
+        "recommendations": {
+            "Unknown": [],
+            "LOW": [],
+            "MEDIUM": [],
+            "HIGH": [],
+            "MAXIMUM": []
+        },
+        "risk": {
+            "confidentiality": {
+                "reputation": {
+                    "impact": "",
+                    "probability": ""
+                },
+                "finances": {
+                    "impact": "",
+                    "probability": ""
+                },
+                "productivity": {
+                    "impact": "",
+                    "probability": ""
+                }
+            },
+            "integrity": {
+                "reputation": {
+                    "impact": "",
+                    "probability": ""
+                },
+                "finances": {
+                    "impact": "",
+                    "probability": ""
+                },
+                "productivity": {
+                    "impact": "",
+                    "probability": ""
+                }
+            },
+            "availability": {
+                "reputation": {
+                    "impact": "",
+                    "probability": ""
+                },
+                "finances": {
+                    "impact": "",
+                    "probability": ""
+                },
+                "productivity": {
+                    "impact": "",
+                    "probability": ""
+                }
+            }
+        }
+    }
+}

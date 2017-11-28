@@ -1,0 +1,14 @@
+rra3json:
+    rra_directory_id: '1HaEyQY97DOJhx8g56nTDai6lwjf7_B-x'
+    standard_levels: ['UNKNOWN', 'LOW', 'MEDIUM', 'HIGH', 'MAXIMUM']
+    data_classification_levels: ['PUBLIC', 'STAFF CONFIDENTIAL', 'WORKGROUP CONFIDENTIAL', 'INDIVIDUAL CONFIDENTIAL']
+    rra_schema: 'rra_schema.json'
+
+servicemap:
+    host: 'null.eis-automation1.private.scl3.mozilla.com'
+    port: 4444
+    proto: 'https'
+    tls_verify: True
+    x509cert: 'mozilla-root.crt'
+    endpoint: '/api/v1/rra/update'
+    apikey: ''
