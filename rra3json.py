@@ -1,5 +1,7 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
 import apiclient.discovery
 import apiclient.http
 import argparse
@@ -21,7 +23,7 @@ class DotDict(dict):
     __delattr__ = dict.__delitem__
 
     def __init__(self, dct):
-        for key, value in dct.items():
+        for key, value in list(dct.items()):
             if hasattr(value, 'keys'):
                 value = DotDict(value)
             self[key] = value
@@ -99,15 +101,15 @@ class gdrive_rra(object):
         return output
 
     def _check_is_meta_table(self, meta):
-        return 'Service Name' in meta.keys()
+        return 'Service Name' in list(meta.keys())
 
     def _check_is_data_dict_table(self, data):
-        return 'Data name / type' in data.keys()
+        return 'Data name / type' in list(data.keys())
 
     def parse_rra(self, rra_gdocs_file):
         rra_id = rra_gdocs_file.get('id')
         if self.debug:
-            print("Parsing RRA {} id {}".format(rra_gdocs_file.get('name'), rra_id))
+            print(("Parsing RRA {} id {}".format(rra_gdocs_file.get('name'), rra_id)))
         # This is the HTML style that allows to find the footer of the document as we don't get class ids passed, this
         # is the next best thing, *sigh*
         footer_sep = {'style': 'color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:8pt;font-family:"Arial";font-style:italic'}
@@ -177,6 +179,11 @@ class gdrive_rra(object):
         else:
             raise Exception('ParsingError', 'Could not translate data classification level')
 
+    def _p2_get_timestamp(self, dt):
+        """Implements datetime.datetime timestamp() that works with python2"""
+        # We are already force-localized to UTC, so, cool.
+        return dt.strftime("%s")
+
     def _generate_rra(self, rra_id, meta, data_dict, threats, recommendations):
         with open(self.rra_schema_file) as fd:
             rrajson = DotDict(json.load(fd))
@@ -189,7 +196,7 @@ class gdrive_rra(object):
         rrajson.summary = 'RRA for {}'.format(meta.get('Service Name'))
         rrajson.source = rra_id
         # We don't have a version record from gdocs, use something unique
-        rrajson.version = str(int(lastmodified.timestamp()))
+        rrajson.version = str(int(self._p2_get_timestamp(lastmodified)))
 
         ## META
         rrajson.details.metadata.service = meta.get('Service Name')
@@ -276,7 +283,7 @@ if __name__ == "__main__":
         try:
             rrajson = d.parse_rra(rra)
         except Exception as e:
-            print('!!! RRA Parsing failed for {} because {}'.format(rra, e))
+            print(('!!! RRA Parsing failed for {} because {}'.format(rra, e)))
             if args.debug:
                 import traceback
                 traceback.print_exc()
