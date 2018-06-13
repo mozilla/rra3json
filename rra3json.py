@@ -112,7 +112,7 @@ class gdrive_rra(object):
             print(("Parsing RRA {} id {}".format(rra_gdocs_file.get('name'), rra_id)))
         # This is the HTML style that allows to find the footer of the document as we don't get class ids passed, this
         # is the next best thing, *sigh*
-        footer_sep = {'style': 'color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:8pt;font-family:"Arial";font-style:italic'}
+        footer_sep = {'style': 'font-size:8pt;font-style:italic'}
         data = self._download_rra_html(rra_id)
         soup = BeautifulSoup(data.decode('utf-8'), 'html.parser')
 
