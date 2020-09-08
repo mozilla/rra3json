@@ -275,7 +275,7 @@ if __name__ == "__main__":
     parser.add_argument('-d', '--debug', action="store_true", help='Does not send RRA to servicemap, display it instead - with any other debug info along the way')
     args = parser.parse_args()
     with open(args.config or 'rra3json.yml') as fd:
-        config = DotDict(yaml.load(fd))
+        config = DotDict(yaml.safe_load(fd))
 
     d = gdrive_rra(credentials_file=args.credentials, config=config, debug=args.debug)
     rra_files = d.find_rra_files()
