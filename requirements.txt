@@ -3,7 +3,7 @@ bs4==0.0.1
 certifi==2017.11.5
 chardet==3.0.4
 google-api-python-client==1.6.4
-httplib2==0.10.3
+httplib2==0.18.0
 idna==2.6
 oauth2client==4.1.2
 pyaml==17.10.0
