@@ -9,7 +9,7 @@ oauth2client==4.1.2
 pyaml==17.10.0
 pyasn1==0.4.2
 pyasn1-modules==0.2.1
-PyYAML==5.1
+PyYAML==5.4
 requests==2.20.0
 rsa==3.4.2
 six==1.11.0
